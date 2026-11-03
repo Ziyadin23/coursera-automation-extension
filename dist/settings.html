@@ -14,31 +14,32 @@
       <h1>Settings</h1>
     </header>
 
-    <div class="tabs">
-      <div class="tab" data-tab="course">Course Backup</div>
-      <div class="tab active" data-tab="additional">Additional</div>
-    </div>
+    <section class="api-settings" lang="ru" aria-labelledby="deepseekHeading">
+      <h2 id="deepseekHeading">DeepSeek для Quiz</h2>
+      <p class="settings-help">Вопросы Quiz отправляются напрямую в DeepSeek с твоим ключом.
+        Оплаты расширения нет; запросы оплачиваются по тарифам DeepSeek.</p>
+      <form id="deepseekForm">
+        <label for="deepseekApiKey">API-ключ DeepSeek</label>
+        <input type="password" id="deepseekApiKey" autocomplete="off" spellcheck="false"
+          placeholder="Вставь API-ключ" maxlength="512" aria-describedby="deepseekKeyStatus deepseekPrivacy" />
+        <p id="deepseekKeyStatus" class="settings-help">Загрузка…</p>
 
-    <div id="course" class="tab-content">
-      <section>
-        <h3>Course Backup Settings</h3>
-        <label for="concurrency">Concurrent Downloads</label>
-        <input type="number" id="concurrency" min="1" max="10" value="5" />
-
-        <label for="quality">Video Quality</label>
-        <select id="quality">
-          <option value="720p">720p</option>
-          <option value="540p">540p</option>
-          <option value="360p">360p</option>
+        <label for="deepseekModel">Модель</label>
+        <select id="deepseekModel">
+          <option value="deepseek-flash">DeepSeek Flash</option>
+          <option value="deepseek-v4-pro">DeepSeek V4 Pro</option>
         </select>
+        <p id="deepseekPrivacy" class="settings-help">Ключ хранится в этом браузере и не синхронизируется.
+          Получить ключ: <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener noreferrer">DeepSeek Platform</a>.</p>
 
-        <label for="subtitle">Subtitle Language</label>
-        <select id="subtitle"></select>
-      </section>
+        <div class="api-actions">
+          <button type="submit" id="saveDeepseekBtn">Сохранить DeepSeek</button>
+          <button type="button" id="removeDeepseekKeyBtn" class="secondary-button" disabled>Удалить ключ</button>
+        </div>
+        <div id="deepseekStatus" role="status" aria-live="polite"></div>
+      </form>
+    </section>
 
-      <button id="saveBtn">💾 Save Settings</button>
-      <div id="status"></div>
-    </div>
     <div id="additional" class="tab-content active">
       <section>
         <h3>Speech Settings</h3>
@@ -62,10 +63,8 @@
           <input type="checkbox" id="autoSubmitQuizToggle" />
           <label for="autoSubmitQuizToggle">Auto Submit Quiz</label>
         </div>
-        <div class="setting-item">
-          <input type="checkbox" id="autoPopupToggle" />
-          <label for="autoPopupToggle">Auto Popup on Expiry</label>
-        </div>
+        <!-- Keep the legacy settings script's element reference without showing subscription controls. -->
+        <input type="checkbox" id="autoPopupToggle" hidden />
       </section>
 
       <button id="saveAdditionalBtn">💾 Save</button>
@@ -74,6 +73,7 @@
   </div>
 
   <script src="scripts/settings.js"></script>
+  <script src="scripts/deepseek-settings.js"></script>
 </body>
 
 </html>
