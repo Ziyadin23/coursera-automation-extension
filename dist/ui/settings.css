@@ -120,7 +120,7 @@ select:focus {
     outline: none;
 }
 
-#saveBtn {
+#saveAdditionalBtn {
     width: 100%;
     padding: 12px;
     background: var(--primary-color);
@@ -132,12 +132,12 @@ select:focus {
     transition: 0.2s;
 }
 
-#saveBtn:hover {
+#saveAdditionalBtn:hover {
     background: #00e600;
     transform: scale(1.02);
 }
 
-#status {
+#additionalStatus {
     margin-top: 10px;
     text-align: center;
     color: var(--primary-color);
@@ -155,42 +155,87 @@ select:focus {
     display: none;
 }
 
-#backupProgressContainer {
-    margin-top: 20px;
-    background: #1e1e1e;
-    padding: 12px 16px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 255, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-#backupProgressText {
-    color: var(--primary-color);
-    font-weight: 500;
-    font-size: 14px;
-    text-align: center;
-}
-
-#backupProgressBar {
-    width: 100%;
-    height: 16px;
-    background: #333;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-#backupProgressFill {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #00ff00, #00cc00);
-    border-radius: 8px;
-    transition: width 0.3s ease;
-}
-
 .setting-item {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.api-settings {
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid #333;
+}
+
+.api-settings h2 {
+    margin: 0 0 12px;
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.settings-help {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 8px 0 16px;
+    overflow-wrap: anywhere;
+}
+
+.settings-help a {
+    color: var(--primary-color);
+}
+
+.api-settings input,
+.api-settings select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.api-settings input::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+.api-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.api-actions button {
+    padding: 11px 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.api-actions .secondary-button {
+    background: transparent;
+    color: var(--text-color);
+    border-color: #777;
+}
+
+.api-actions button:focus-visible,
+.settings-help a:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+.api-actions button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+#deepseekStatus {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--primary-color);
+}
+
+#deepseekStatus[data-state="error"] {
+    color: #ffb4b4;
 }
